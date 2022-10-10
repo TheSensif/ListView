@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // notificar l'adapter dels canvis al model
                 adapter.notifyDataSetChanged();
+
             }
         });
     }
