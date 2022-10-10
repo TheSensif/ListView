@@ -8,9 +8,15 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    String[] nombres = {"Sergi","Alejandro","Miguel","Alex","Sara","Maria","Carla","Jose","Javier",
+            "Noa","Alberto","Ivan","Cristian","Biel","Nati"};
+
+    List<String> listNombres = Arrays.asList(nombres);
 
     // Model: Record (intents=puntuació, nom)
     class Record {
@@ -68,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i=0;i<500;i++) {
-                    records.add(new Record(100, "Anonymous"));
+                for (int i=0;i<15;i++) {
+                    records.add(new Record((int) (Math.random() * 100), listNombres.get((int) (Math.random() * 15))));
                 }
                 // notificar l'adapter dels canvis al model
                 adapter.notifyDataSetChanged();
