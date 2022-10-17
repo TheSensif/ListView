@@ -9,6 +9,8 @@ import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         public Record(int _intents, String _nom ) {
             intents = _intents;
             nom = _nom;
+        }
+
+        public int getIntents() {
+            return intents;
         }
     }
     // Model = Taula de records: utilitzem ArrayList
@@ -81,6 +87,21 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
             }
+        });
+
+        Button o = (Button) findViewById(R.id.button2);
+        o.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.sort(records, new Comparator<Record>() {
+                    @Override
+                    public int compare(Record t1, Record t2) {
+                        return new Integer(t2.getIntents()).compareTo(new Integer(t1.getIntents()));
+                    }
+                });
+                adapter.notifyDataSetChanged();
+            }
+
         });
     }
 }
